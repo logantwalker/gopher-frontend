@@ -1,0 +1,18 @@
+{
+    "name": "gopher-chess-frontend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./server/server.ts",
+    "scripts": {
+        "start:server": "cd server && npm start",
+        "start:client": "cd client && npm start",
+        "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/cors": "^2.8.13",
+        "concurrently": "^8.1.0"
+    }
+}
