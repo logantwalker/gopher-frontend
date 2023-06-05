@@ -105,9 +105,9 @@ function App() {
     }, [moves]);
     const processInput = (i: string) => {
         let words = i.split(" ");
-        if (words[0] == "move" || words[0] == "m") {
+        if (words[0] === "move" || words[0] === "m") {
             console.log(moves);
-            if (words.length == 2) {
+            if (words.length === 2) {
                 let pattern = new RegExp("^[a-h][1-8][a-h][1-8]$");
                 if (!pattern.test(words[1])) {
                     console.log("Invalid move");
@@ -118,7 +118,7 @@ function App() {
             } else {
                 console.log("Invalid move");
             }
-        } else if (words[0] == "go" || words[0] == "g") {
+        } else if (words[0] === "go" || words[0] === "g") {
             setSystemMsg("thinking...");
             setInputValue("");
             let uciCommand = {
@@ -163,7 +163,7 @@ function App() {
                     setInputValue("");
                     setSystemMsg("error: " + err);
                 });
-        } else if (words[0] == "!commands") {
+        } else if (words[0] === "!commands") {
             toggleCommands(!showCommands);
             setInputValue("");
         } else {
