@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Gopher-Chess Terminal Based Chess Engine
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Check out my website here!](https://gopher-frontend-nq3ygk4l7a-uc.a.run.app)
 
 ## Available Scripts
 
