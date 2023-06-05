@@ -1,13 +1,25 @@
-# Stage 1 - the build process
-FROM node:18-alpine as build
+# Build stage
+FROM node:18-alpine AS builder
+
 WORKDIR /app
+
 COPY package*.json ./
+
 RUN npm install
-COPY . ./
+
+COPY . .
+
 RUN npm run build
 
-# Stage 2 - the production environment
-FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Production stage
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app .
+
+ENV NODE_ENV production
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

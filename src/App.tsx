@@ -10,7 +10,7 @@ function App() {
 
     // fetching new board
     useEffect(() => {
-        fetch("http://localhost:9001/api/chess/new")
+        fetch(process.env.BFF_URL + "/api/chess/new")
             .then((res) => res.json())
             .then((data) => {
                 let lines = data.split("\n");
@@ -69,7 +69,7 @@ function App() {
                 moves: moves,
             };
 
-            fetch("http://localhost:9001/api/chess/uci", {
+            fetch(process.env.BFF_URL + "/api/chess/uci", {
                 method: "POST",
                 body: JSON.stringify(uciCommand),
                 headers: { "Content-Type": "application/json" },
@@ -126,7 +126,7 @@ function App() {
                 moves: moves,
             };
             console.log("fetching best move");
-            fetch("http://localhost:9001/api/chess/uci", {
+            fetch(process.env.BFF_URL + "/api/chess/uci", {
                 method: "POST",
                 body: JSON.stringify(uciCommand),
                 headers: { "Content-Type": "application/json" },
