@@ -22,7 +22,7 @@ app.use(routes);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-app.use(express.static("client/build"));
+app.use(express.static("../client/buil"));
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
