@@ -1,30 +1,45 @@
-# Step 1: Build the React application
+# --- Build stage ---
 FROM node:18-alpine AS builder
 
+# Install build dependencies for native Node modules
+RUN apk add --no-cache python make g++
+
+# Set working directory
 WORKDIR /app
 
-COPY ./client/package*.json ./
-RUN npm install
-COPY ./client ./
-RUN npm run build
+# Install server dependencies
+COPY server/package.json server/package-lock.json ./server/
+RUN cd server && npm ci
 
-# Step 2: Set up the server
+# Build server
+COPY server/ ./server/
+RUN cd server && npm run build
+
+# Install client dependencies
+COPY client/package.json client/package-lock.json ./client/
+RUN cd client && npm ci
+
+# Build client
+COPY client/ ./client/
+RUN cd client && npm run build
+
+# --- Run stage ---
 FROM node:18-alpine
 
+# Set working directory
 WORKDIR /app
 
-COPY ./server/package*.json ./
-RUN npm install
-COPY ./server ./
+# Copy server build from previous stage
+COPY --from=builder /app/server/dist ./server/dist
 
-# Copy static files from build stage
-COPY --from=builder /app/build ./client/build
+# Copy client build from previous stage
+COPY --from=builder /app/client/build ./client/build
 
-# Set environment variable
-ENV NODE_ENV=production
+# Set NODE_ENV to production
+ENV NODE_ENV production
 
-# Expose the port server is running on
+# Expose the server port
 EXPOSE 9001
 
-# Start the application
-CMD [ "npm", "start" ]
+# Run the server
+CMD ["node", "server/dist/index.js"]
