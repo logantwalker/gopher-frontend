@@ -14,6 +14,7 @@ body {
 
 .board-container {
     display: flex;
+    flex-direction: row;
 }
 
 .disp-container {
@@ -28,6 +29,51 @@ body {
 
 .board-item {
     order: 0;
+}
+
+.chat-item {
+    width: 250px;
+    font-size: calc(8px + 1vmin);
+    margin: 1rem 0rem 0rem 1rem;
+    border: 1px solid #1bff80;
+    border-radius: 5px;
+    order: 1;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat-header {
+    padding: 0.5rem;
+    border-bottom: 1px solid #1bff80;
+}
+
+.chat-body {
+    flex-grow: 1;
+    padding: 0.5rem;
+    height: 100%;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+    max-height: 500px;
+}
+
+.chat-input {
+    padding: 0.5rem;
+    border-top: 1px solid #1bff80;
+}
+
+.chat-text {
+    margin: 0;
+}
+
+textarea.chat-text {
+    color: #1bff80;
+    background: transparent;
+    border: none;
+    font-size: calc(8px + 1vmin);
 }
 
 .input-item {
@@ -45,6 +91,9 @@ input.terminal-line {
     width: 0.5ch;
 }
 input:focus {
+    outline: none;
+}
+textarea:focus {
     outline: none;
 }
 

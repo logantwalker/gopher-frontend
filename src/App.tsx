@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Chat from "./Chat";
 import "./App.css";
 
 function App() {
@@ -178,6 +179,9 @@ function App() {
                 <div className="board-item">
                     <div>{boardLines}</div>
                     <div>{gameInfo}</div>
+                </div>
+                <div className="chat-item">
+                    <Chat />
                 </div>
             </div>
             <div className="disp-container">
