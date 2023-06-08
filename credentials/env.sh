@@ -1,1 +1,0 @@
-export API_URL="https://gopher-api-nq3ygk4l7a-uc.a.run.app"
