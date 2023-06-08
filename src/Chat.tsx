@@ -46,7 +46,8 @@ export default function Chat() {
     };
 
     const getResponse = () => {
-        let url = `https://gopher-bff-nq3ygk4l7a-uc.a.run.app/api/chat`;
+        // let url = `https://gopher-bff-nq3ygk4l7a-uc.a.run.app/api/chat`;
+        let url = `http://localhost:9001/api/chat`;
         let req: ChatCompletion = {
             model: "gpt-3.5-turbo",
             messages: chatHist,

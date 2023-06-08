@@ -32,6 +32,7 @@ body {
 }
 
 .chat-item {
+    display: none;
     width: 250px;
     font-size: calc(8px + 1vmin);
     margin: 1rem 0rem 0rem 1rem;
